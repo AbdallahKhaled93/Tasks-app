@@ -24,6 +24,8 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: 
     // database will be created automatically 
     const db = client.db(databseName);
 
+    /********** Insert ****************/
+
     /*db.collection("users").insertOne({
         name : "Sohaila",
         age : 27
@@ -61,6 +63,48 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: 
         console.log(result.ops);
     });*/
 
+    /********** Read ****************/
+    /*db.collection("users").findOne({ name : "Sohaila" }, (error, user) => {
+        if(error)
+        {
+            console.log("Unable to fetch user");
+            return;
+        }
+
+        console.log(user);
+
+    });*/
+
+    /* returns a cursor, which is transformed to array, 
+    which takes a callback to be run on each element */
+    /*
+    db.collection("tasks").find({ completed : false }).toArray((error, task) => {
+        if(error)
+        {
+            console.log("Unable to fetch task");
+            return;
+        }
+
+        console.log(task);
+
+    });*/
+
+
+    /********** Update ****************/
+    const updatePromise = db.collection("users").updateOne({ _id : new ObjectID("5f5fdb48456dad09f33f3a7c") }, {
+        $set: {
+            name : 'Bro'
+        }
+    });
+
+    updatePromise.then( (result) => {
+        console.log("success");
+    }).catch( (error) => {
+        console.log("error")
+    });
+
+
+    
 
 });
 
