@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AbdallahKhaled93/Tasks-app#readme",
   "dependencies": {
     "mongodb": "^3.6.1",
-    "mongoose": "^5.10.6"
+    "mongoose": "^5.10.6",
+    "validator": "^13.1.17"
   }
 }
